@@ -9,7 +9,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse application/json
 app.use(bodyParser.json())
-//const blogcontent = mongoose.model('blog', blogSchema);
 mongoose.Promise = global.Promise;
 // Connecting to the database
 mongoose.connect(' mongodb://127.0.0.1:27017/test', {useNewUrlParser: true}
@@ -24,15 +23,9 @@ mongoose.connect(' mongodb://127.0.0.1:27017/test', {useNewUrlParser: true}
 app.get('/', (req, res) => {
     res.json({"message": "Welcome to My Blog Backend. "});
 });
-const blog = require('./controller/note.controller.js');
- // Create a new Note
- app.post('/blogs', blog.create);
- // Retrieve all Notes
- app.get('/blogs', blog.findAll);
-
-
+require('./routes/blog.routes.js')(app);
  // listen for requests
-const port = process.env.PORT || 2300
-app.listen(port, () => {
-    console.log(`Server is listening on port ${port}....`);
-});
+ const port = process.env.PORT || 2300;
+ app.listen(port, () => {
+     console.log(`Server is listening on port ${port}....`);
+ });
