@@ -1,13 +1,17 @@
+const { json } = require('body-parser');
+
  module.exports = (app) => {
+const express = require('express');
+const jwt = require('jsonwebtoken');
 const blog = require('../controllers/blog.controller.js');
- // Create a new Note
- app.post('/api/v1/articles/new', blog.create);
+const protection = require('../controllers/authcontroller');
+app.post('/api/v1/articles/new',protection.protect, blog.create);
  // Retrieve all Blogs
- app.get('/api/v1/articles/', blog.findAll);
+app.get('/api/v1/articles/', blog.findAll);
  // Retrieve one Blogs
- app.get('/api/v1/articles/:id', blog.findOne);
+ app.get('/api/v1/article/:id', blog.findOne);
   // update one Blogs
-app.put('/api/v1/articles/:id', blog.update);
+app.put('/api/v1/article/:id',protection.protect, blog.update);
 // delete one Blogs
-  app.delete('/api/v1/articles/erase/:id', blog.delete);
-}
+app.delete('/api/v1/article/erase/:id',protection.protect, blog.delete);
+ }

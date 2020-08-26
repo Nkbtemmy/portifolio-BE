@@ -1,10 +1,13 @@
 const Blog  = require('../models/blog.model.js');
+const User = require("../models/user_schema");
+const bcrypt = require("bcryptjs");
+//import * as Blog from '../models/blog.model.js';
 // Create and Save a new Blog
-exports.create = async (req, res) => {
+export const create = async (req, res) => {
           // Validate request
-          if(!req.body.content) {
+          if(!req.body.title || !req.body.content || !req.body.author) {
             return res.status(400).send({
-                message: "Blog content can not be empty"
+                message: "Blog content or title or author can not be empty"
             });}
         try { 
             const data = new Blog(req.body)
@@ -14,23 +17,8 @@ exports.create = async (req, res) => {
             res.status(400).json({ message: err.message })
           }
         }
-   /* 
-    const blogs = new Blog(req.body);
-    // Save Blog in the database
-    await blogs.save()
-    .then(data => {
-        res.send(data);
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while creating the Note."
-        });
-    });
-    res.send({blogs}); 
-};
-*/
-
 // Retrieve and return all notes from the database.
-exports.findAll = (req, res) => {
+export const findAll = (req, res) => {
     Blog.find()
     .then(blogs => {
         res.send({
@@ -48,7 +36,7 @@ exports.findAll = (req, res) => {
     });
 };
 // Find a single blog with a id
-exports.findOne = (req, res) => {
+export const findOne = (req, res) => {
     Blog.findById(req.params.id)
     .then(note => {
         if(!note) {
@@ -69,21 +57,15 @@ exports.findOne = (req, res) => {
     });
 };
 // Update a note identified by the id in the request
-exports.update = (req, res) => {
-    // Validate Request
-    if(!req.body.content) {
-        return res.status(400).send({
-            message: "Blog content can not be empty"
-        });
-    }
-
+export const update = (req, res) => {
     // Find note and update it with the request body
     Blog.findOneAndUpdate(req.params.id, {
-        title: req.body.title || "Untitled Note",
+        title: req.body.title ,
         content: req.body.content,
         author: req.body.author
     }, {new: true})
     .then(note => {
+
         if(!note) {
             return res.status(404).send({
                 message: `blog not found with id ${req.params.id}`
@@ -123,3 +105,4 @@ exports.delete = (req, res) => {
         });
     });
 };
+//module.exports = moongoose;
