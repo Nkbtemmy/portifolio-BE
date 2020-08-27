@@ -1,8 +1,5 @@
 const { json } = require('body-parser');
-
  module.exports = (app) => {
-const express = require('express');
-const jwt = require('jsonwebtoken');
 const blog = require('../controllers/blog.controller.js');
 const protection = require('../controllers/authcontroller');
 app.post('/api/v1/articles/new',protection.protect, blog.create);

@@ -4,9 +4,9 @@ import bcrypt from 'bcryptjs';
 import {promisify} from 'util';
 
 const signinToken= params=>{
-    return jwt.sign(params,'jsonWebToken_Password_Webtoken_Secret' /*,{
-        expiresIn:'60d'
-}*/);
+    return jwt.sign(params,process.env.secretKey ,{
+        expiresIn:'30d'
+});
 };
 
 exports.signUp=async(req,res)=>{
@@ -74,7 +74,7 @@ exports.protect=async (req,res,next)=>{
             //verification token
             let decoded;
             try{
-           decoded=await promisify(jwt.verify)(token,'jsonWebToken_Password_Webtoken_Secret')
+           decoded=await promisify(jwt.verify)(token,process.env.secretKey)
            }
            catch(err){
             res.status(401).json({
@@ -92,25 +92,3 @@ exports.protect=async (req,res,next)=>{
            }
             next();
         }
-        /*
-        // Verify Token
-function verifyToken(req, res, next) {
-  // Get auth header value
-  const bearerHeader = req.headers['authorization'];
-  // Check if bearer is undefined
-  if(typeof bearerHeader !== 'undefined') {
-    // Split at the space
-    const bearer = bearerHeader.split(' ');
-    // Get token from array
-    const bearerToken = bearer[1];
-    // Set the token
-    req.token = bearerToken;
-    // Next middleware
-    next();
-  } else {
-    // Forbidden
-    res.sendStatus(403);
-  }
-
-}
-*/

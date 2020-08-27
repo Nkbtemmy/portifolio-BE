@@ -1,15 +1,7 @@
-/**
- * User controller : All business logic goes here
- */
+
 const User = require("../models/user_schema");
-const bcrypt = require("bcryptjs");
-/**
- * this method is to create the user
- */
-exports.create = (req, res) => {
-  /**
-   * validation request
-   */
+import bcrypt from 'bcryptjs';
+export const create = (req, res) => {
   if (!req.body.email || !req.body.password || !req.body.name) {
     return res.status(400).send({
       message: "Required field can not be empty",
@@ -24,27 +16,16 @@ exports.create = (req, res) => {
     isActive: req.body.isActive,
     userType: req.body.userType,
   });
-  /**
-   * Save user to database
-   */
-  user
-    .save()
-    .then((data) => {
+  console.log(user)
+  user.save().then((data) => {
       res.send(data);
-    })
-    .catch((err) => {
+    }).catch((error) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while creating the User.",
+        message: "Some error occurred while creating the User.",
       });
     });
 };
-
-
-
-/** 
- * Find all Users
- */
-exports.findAll = (req, res) => {
+export const findAll = (req, res) => {
     User.find()
       .sort({ name: -1 })
       .then((users) => {
@@ -58,7 +39,7 @@ exports.findAll = (req, res) => {
   };
   
    /* Find one User*/
-  exports.findOne = (req, res) => {
+  export const findOne = (req, res) => {
     User.findById(req.params.id)
       .then((user) => {
         if (!user) {
@@ -79,7 +60,7 @@ exports.findAll = (req, res) => {
   /**
    * Delete a user with the specified id in the request
    */
-  exports.delete = (req, res) => {
+  exports. delete = (req, res) => {
     User.findByIdAndRemove(req.params.id)
       .then((user) => {
         if (!user) {
@@ -99,7 +80,7 @@ exports.findAll = (req, res) => {
   /**
    * Update a user with the specified id in the request
    */
-  exports.UpdateUser = (req, res) => {
+  export const UpdateUser = (req, res) => {
     if (!req.body.email || !req.body.password || !req.body.name) {
       res.status(400).send({
         message: "required fields cannot be empty",
@@ -120,4 +101,3 @@ exports.findAll = (req, res) => {
         });
       });
   };
-  

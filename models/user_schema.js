@@ -1,4 +1,3 @@
-
 const mongoose = require("../config/dbconfig");
 const schema = new mongoose.Schema(
   {
@@ -67,4 +66,3 @@ const schema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Users", schema);
-

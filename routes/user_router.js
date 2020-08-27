@@ -1,5 +1,4 @@
-
-const express = require("express");
+import express from 'express';
 const router = express.Router();
 const userControllr = require("../controllers/user_controller");
 const autho = require('../controllers/authcontroller');
@@ -10,4 +9,3 @@ router.get("/user/:id", userControllr.findOne);
 router.put("/user/:id", userControllr.UpdateUser);
 router.delete("/user/erase/:id", userControllr.delete);
 module.exports = router;
-
