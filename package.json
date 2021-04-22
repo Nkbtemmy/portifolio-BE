@@ -4,6 +4,12 @@
   "description": "��#\u0000 \u0000g\u0000i\u0000t\u0000_\u0000p\u0000r\u0000a\u0000c\u0000t\u0000i\u0000c\u0000e\u0000_\u0000b\u0000a\u0000c\u0000k\u0000e\u0000n\u0000d\u0000\r\u0000 \u0000",
   "main": "server.js",
   "dependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.13.16",
+    "@babel/node": "^7.13.13",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/register": "^7.13.16",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
@@ -18,12 +24,6 @@
     "nodemailer": "^6.5.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.16",
-    "@babel/core": "^7.13.16",
-    "@babel/node": "^7.13.13",
-    "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.13.15",
-    "@babel/register": "^7.13.16",
     "nodemon": "^2.0.7"
   },
   "scripts": {
