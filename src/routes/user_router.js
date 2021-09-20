@@ -8,4 +8,6 @@ router.get("/users", userControllr.findAll);
 router.get("/user/:id", userControllr.findOne);
 router.put("/user/:id", userControllr.UpdateUser);
 router.delete("/user/erase/:id", userControllr.delete);
+router.post("/user/seedDate",userControllr.SeedingDate);
+router.delete("/user/seedData",userControllr.DeleteSeeds);
 module.exports = router;

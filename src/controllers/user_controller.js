@@ -1,5 +1,7 @@
 import bcrypt from 'bcryptjs';
 const User = require("../database/models/user_schema");
+const BirthDays = require('../database/models/List.schema')
+import {userList} from '../utils/list'
 exports.create = (req, res) => {
   if (!req.body.email || !req.body.password || !req.body.name) {
     return res.status(400).send({
@@ -104,4 +106,59 @@ exports.findAll = (req, res) => {
         });
       });
   };
-  
+  exports.SeedingDate = (req,res) =>{
+     userList.map((data)=>{  
+      let date = new Date(data.bd)
+      date.toLocaleDateString();
+      const user = new BirthDays({
+        fname:data.fname,
+        sname:data.sname,
+        bd:date
+      })
+      user.save()
+    })
+    BirthDays.find().then(
+    (result)=>{
+        //console.log(result)
+        res.status(201).send({
+          status:201,
+          Size_list: result.length,
+          message:"userSeeded",
+          data:result
+        })
+      }
+    ).catch((err)=>{
+      console.log(err);
+      res.send({"message":"error from backend happened"})
+    })
+    
+  }
+  exports.DeleteSeeds = (req,res)=>{
+    BirthDays.find().then(
+      (result)=>{
+        if(result.length){
+          result.forEach((data)=>{
+            BirthDays.findOneAndDelete({_id:data._id})
+            .then(() => {
+              console.log("deleted")
+              res.send({
+                message:"deleted successful"
+              })
+            }).catch((err) => {
+              res.send({
+                error: "error happen "
+              })
+              console.log(`Doesn't deleted because of ${err}`)
+            });
+          })
+        }
+        else{
+          console.log("No data in doc")
+          res.send("No thing in Document")
+        }
+      }
+    ).catch((err)=>{
+      console.log(err);
+      res.send({"message":"error 1 from backend happened"})
+    })
+  }
