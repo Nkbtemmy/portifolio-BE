@@ -47,3 +47,20 @@ const sendEmail= async (mailOptions)  => {
     })
 }
 export  default sendEmail;
+
+
+
+
+{/* <div style=" display: flex;
+  justify-content: center;
+  align-items: center; ">
+  <div style="border:1px solid black; border-radius:25%;width:50%; margin:35px; box-shadow: 0 4px 8px 0 rgba(50, 0, 30, 0.2), 0 6px 20px 0 rgba(0, 10, 120, 0.19);background:sky-blue">
+    <div style="padding:50px">
+      <p>Good Mornig Helene</p>
+      <p> Mr NKUBITO; He is wishing you happy birthday</p>
+      <p>“Happy birthday! I hope all your birthday wishes and dreams come true.”
+“A wish for you on your birthday, whatever you ask may you receive, whatever you seek may you find, whatever you wish may it be fulfilled on your birthday and always. Happy birthday!”
+“ Another adventure filled year awaits you. Welcome it by celebrating your birthday with pomp and splendor. Wishing you a very happy and fun-filled birthday!</p>
+    </div>
+  </div>
+ </div> */}
