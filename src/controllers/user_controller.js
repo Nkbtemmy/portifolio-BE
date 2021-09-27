@@ -107,15 +107,20 @@ exports.findAll = (req, res) => {
       });
   };
   exports.SeedingDate = (req,res) =>{
-     userList.map((data)=>{  
-      let date = new Date(data.bd)
+     userList.map((data)=>{ 
+      // console.log(data);
+      let date = new Date(data.birthdate)
       date.toLocaleDateString();
+     // console.log(date)
       const user = new BirthDays({
-        fname:data.fname,
-        sname:data.sname,
-        bd:date
+        surname: data.surname,
+        firstname: data.firstname,
+        gender: data.gender,
+        birthdate:date,
+        phone: data.phone,
+        email: data.email
       })
-      user.save()
+    user.save()
     })
     BirthDays.find().then(
     (result)=>{
@@ -162,3 +167,24 @@ exports.findAll = (req, res) => {
       res.send({"message":"error 1 from backend happened"})
     })
   }
+
+  exports.classMateList = (req,res)=>{
+  BirthDays.find().then(
+    (result)=>{
+      if(result.length){
+          res.status(200).send({
+            message:"list of classmates",
+            size:result.length,
+            result
+          })
+      }
+      else{
+        console.log("No data in doc")
+        res.send("No thing in Document")
+      }
+    }
+  ).catch((err)=>{
+    console.log(err);
+    res.send({"message":"error 1 from backend happened"})
+  })
+}

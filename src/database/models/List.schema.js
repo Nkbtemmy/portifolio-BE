@@ -1,23 +1,41 @@
+const { string } = require("joi");
 const mongoose = require("../config/dbconfig");
 const schema = new mongoose.Schema(
   {
 
-    sname: {
+    surname: {
       desc: "The user's second name.",
       trim: true,
       type: String,
       required: true,
     },
-    fname: {
+    firstname: {
         desc: "The user's first name.",
         trim: true,
         type: String,
         required: true,
     },
-    bd: { 
-        desc: "The User's birthday",
-        type: Date
+    gender: {
+      desc: "user gender.",
+      trim: true,
+      type: String,
+      default: "Others",
+      required: true,
+    },
+    birthdate: { 
+      type: Date,
      },
+     email: {
+      desc: "The user's email address.",
+      trim: true,
+      type: String,
+      index: true,
+      unique: true,
+      required: true,
+    },
+    phone:{
+      type: String
+    }
 
   },
   {

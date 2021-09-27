@@ -10,4 +10,5 @@ router.put("/user/:id", userControllr.UpdateUser);
 router.delete("/user/erase/:id", userControllr.delete);
 router.post("/user/seedDate",userControllr.SeedingDate);
 router.delete("/user/seedData",userControllr.DeleteSeeds);
+router.get("/users/classmates",userControllr.classMateList);
 module.exports = router;
