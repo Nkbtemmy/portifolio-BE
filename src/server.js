@@ -1,9 +1,11 @@
 import express from 'express';
 import cors from 'cors'
+import job from './controllers/schedule';
 import msg from './routes/messages'
 //import mongoose from './database/config/dbconfig';
 const app = express();
 app.use(cors());
+job();
 //app.use(express.urlencoded({ extended: true,useUnifiedTopology: true  }))
 app.use(express.json())
 //mongoose.Promise = global.Promise;
