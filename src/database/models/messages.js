@@ -1,9 +1,12 @@
+import { string } from 'joi';
 import mongoose from 'mongoose'
 const messageSchema = mongoose.Schema({
     name:  String, // String is shorthand for {type: String}
     email: String,
     subject: String,
-    message: String
+    dateOfBirth:{ type: Date, default: Date.now },
+    message: String,
+    years: Number
    // date: { type: Date, default: Date.now },
 }, {
     timestamps: true
