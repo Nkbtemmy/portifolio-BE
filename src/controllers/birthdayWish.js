@@ -21,7 +21,7 @@ const birtdayWish = (req,res) =>{
                 console.log(data)
                 sendEmail(data);
             }
-            console.log("no one have bd today")
+            //console.log("no one have bd today")
         })
     // console.log(resp.data.result)
     }).catch((error)=>{
