@@ -9,9 +9,12 @@ const sendEmail= async (mailOptions)  => {
     //console.log(mailOptions);
     const transporter = nodemailer.createTransport({
         service: 'gmail',
+        port: 465,
+        secure: true,
+        logger: true,
         auth: {
-            user : `${process.env.emailUsername}`,
-            pass : `${process.env.emailPassword}`
+          user : process.env.AUTH_EMAIL,
+          pass : process.env.AUTH_PASSWORD
         }
     });
     const Options = {
@@ -39,7 +42,7 @@ const sendEmail= async (mailOptions)  => {
     await transporter.sendMail(Options, (error) => {
         if (error) {
             console.log("email sent fails",error)
-           // return false
+            throw error;
         } else {
             console.log("Email sent successfull")
           //  return true

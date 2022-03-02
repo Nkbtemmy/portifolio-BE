@@ -29,7 +29,6 @@ class msgControllers{
         let today = new Date();
         let thisYear = today.getFullYear()
         let userYear = new Date(req.body.dob);
-        let years = thisYear - userYear.getFullYear()
        
 
         const msg = {
@@ -38,7 +37,6 @@ class msgControllers{
             subject: req.body.subject,
             message: req.body.message,
             dateOfBirth: req.body.dob,
-            years:years
         }
 
         try{

@@ -6,8 +6,6 @@ const messageSchema = mongoose.Schema({
     subject: String,
     dateOfBirth:{ type: Date, default: Date.now },
     message: String,
-    years: Number
-   // date: { type: Date, default: Date.now },
 }, {
     timestamps: true
 });
