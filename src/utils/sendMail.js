@@ -6,7 +6,8 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const sendEmail= async (mailOptions)  => {
-    //console.log(mailOptions);
+  try {
+        //console.log(mailOptions);
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         port: 465,
@@ -39,15 +40,11 @@ const sendEmail= async (mailOptions)  => {
                 <footer style="position: fixed;left: 0;bottom: 0;width: 100%;background-color: black;color: white;text-align: center;"><div>All Right Reserved to <a href = "https://imanzi.netlify.app/" target="_blank"  >INKUBITO Y'Imanzi</a> </div></footer>
             </div>`
     }
-    await transporter.sendMail(Options, (error) => {
-        if (error) {
-            console.log("email sent fails",error)
-            throw error;
-        } else {
-            console.log("Email sent successfull")
-          //  return true
-        }
-    })
+    return transporter.sendMail(Options);
+      
+  } catch (error) {
+      throw error;
+  }
 }
 export  default sendEmail;
 

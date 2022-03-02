@@ -27,8 +27,7 @@ class msgControllers{
     static async msg(req,res){
     
         let today = new Date();
-        let thisYear = today.getFullYear()
-        let userYear = new Date(req.body.dob);
+
        
 
         const msg = {
@@ -48,11 +47,19 @@ class msgControllers{
                 subject: `${msg.subject}`,
                 message: `${msg.message}`
             };
-           await emails(options);
-            res.status(200).json({
-                saveMessage,
-                message:"Saved successfull"
-            })
+           await emails(options).then((data)=>{
+               console.log(data)
+                res.status(200).json({
+                    saveMessage,
+                    message:"Saved successfull"
+                })
+           }).catch((err)=>{
+               return res.send({
+                   status:403,
+                   err
+               })
+           })
+            
         }catch(error){
             console.log(error),
             res.status(500).send({ 
