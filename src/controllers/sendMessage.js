@@ -56,6 +56,7 @@ class msgControllers{
            }).catch((err)=>{
                return res.send({
                    status:403,
+                   message:err.message,
                    err
                })
            })

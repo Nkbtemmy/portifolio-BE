@@ -19,11 +19,14 @@
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.5",
     "node": "^14.8.0",
     "nodemailer": "^6.5.0",
+    "passport": "^0.5.2",
+    "passport-google-oauth2": "^0.2.0",
     "xlsx": "^0.17.2"
   },
   "devDependencies": {
@@ -32,7 +35,8 @@
   "scripts": {
     "build": "babel src --out-dir dist --source-maps inline --copy-files",
     "start": "npm run build && node --require @babel/polyfill ./dist/server.js",
-    "dev": "nodemon --exec babel-node ./src/server.js"
+    "dev": "nodemon --exec babel-node ./src/server.js",
+    "google": "nodemon --exec babel-node ./google/index.js"
   },
   "repository": {
     "type": "git",

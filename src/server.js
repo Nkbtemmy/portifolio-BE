@@ -10,6 +10,8 @@ job();
 app.use(express.json())
 //mongoose.Promise = global.Promise;
 app.get('/', (req, res) => {
+    var ip = req.header('x-forwarded-for') ||  req.ip;
+    console.log("ip address: ", ip)
     res.json({"message": "Welcome to My Blog Backend. "});
 });
 // var allowCrossDomain = function(req, res, next){
