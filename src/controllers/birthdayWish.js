@@ -30,10 +30,10 @@ const birtdayWish = (req,res) =>{
     // console.log(resp.data.result)
     }).catch((error)=>{
         console.log(error.message)
-         res.status(500).send({
-             message:"error happen from backend",
-             errorMessage:error.message
-         })
+        //  res.send({
+        //      message:"error happen from backend",
+        //      errorMessage:error.message
+        //  })
     })
 }
 export default birtdayWish;
