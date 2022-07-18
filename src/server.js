@@ -10,8 +10,8 @@ job();
 app.use(express.json())
 //mongoose.Promise = global.Promise;
 app.get('/', (req, res) => {
-    var ip = req.header('x-forwarded-for') ||  req.ip;
-    console.log("ip address: ", ip)
+    // var ip = req.header('x-forwarded-for') ||  req.ip;
+    // console.log("ip address: ", ip)
     res.json({"message": "Welcome to My Blog Backend. "});
 });
 // var allowCrossDomain = function(req, res, next){
@@ -33,7 +33,7 @@ require('./routes/blog.routes')(app);
 app.use("/api/v1/",require('./routes/user_router'));
 app.use(msg);
 
-const port = process.env.PORT || 2300;
+const port = process.env.PORT || 8082;
  app.listen(port, () => {
      console.log(`Server is listening on port ${port}....`);
  });

@@ -21,7 +21,7 @@ const birtdayWish = (req,res) =>{
             if(bornMonth == thisMonth && birthday == today){
                 userData.push(data)
                 console.log(`today is ${data.firstname}  birthday`)
-                console.log(data)
+                // console.log(data)
                 sendEmail(data);
             }
             //console.log("no one have bd today")
