@@ -4,7 +4,6 @@ const birtdayWish = (req,res) =>{
     const dateOfDay = new Date();
     const today = dateOfDay.getDate();
     const thisMonth = dateOfDay.getMonth();
-    console.log("hellowe!!!")
     axios.get("https://voicetoworld.herokuapp.com/api/v1/users/classmates")
     .then((resp)=>{
 
