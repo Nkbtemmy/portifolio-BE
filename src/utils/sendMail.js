@@ -9,17 +9,18 @@ const sendEmail= async (mailOptions)  => {
   try {
         //console.log(mailOptions);
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        port: 465,
-        secure: true,
-        logger: true,
-        auth: {
-          user : process.env.AUTH_EMAIL,
-          pass : process.env.AUTH_PASSWORD
-        }
+      host: process.env.TRANSPORTER_SERVICE,
+      port: 465,
+      auth: {
+        user: process.env.SERVICE_USERNAME,
+        pass: process.env.SERVICE_PASSWORD,
+      },
+      secure: true,
+      logger: true,
+      debug: true,
     });
     const Options = {
-        from: `NKUBITO 's Account <nkbtemmy2@gmail.com>`,
+        from: `NKUBITO 's Account  <${process.env.SERVICE_USERNAME}>`,
         to: `emmanuelnkubito2@gmail.com`,
         subject: mailOptions.subject,
         html: `
