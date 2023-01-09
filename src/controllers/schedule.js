@@ -1,7 +1,7 @@
 var CronJob = require('cron').CronJob;
 import birtdayWish from './birthdayWish';
 
-const job = () =>{ new CronJob('00 00 * * *', function() {
+const job = () =>{ new CronJob('0 18 * * *', function() {
     console.log("its tie m now");
     birtdayWish();
     

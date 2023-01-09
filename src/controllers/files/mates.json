@@ -524,9 +524,9 @@
         "Surname":"INGABIRE",
         "FirstName":"CLEMENCE",
         "Gender":"F",
-        "Birthdate":"6/21/1999",
+        "Birthdate":"11/03/1999",
         "Phone":" 0782861421",
-        "Email":"ingabireclec@gmail.com"
+        "Email":"emmanuelnkubito2@gmail.com"
     },
 
     {
@@ -633,7 +633,16 @@
         "FirstName":"MARIE CYNTHIA",
         "Gender":"F",
         "Birthdate":"11/23/1998",
-        "Phone":"   0780607409",
+        "Phone":"0780607409",
         "Email":"abijurucyn@gmail.com"
+    },
+    {
+        "Surname":"MUSHIMIYIMANA",
+        "FirstName":"Jean De Dieu",
+        "Gender":"M",
+        "Birthdate":"10/21/1996",
+        "Phone":"0786164559",
+        "Email":"ntwalijeandedieu6@gmail.com "
     }
+    
     ]
